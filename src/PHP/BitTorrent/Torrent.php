@@ -108,7 +108,7 @@ class Torrent {
             $decoder = new Decoder();
         }
 
-        $decoded = $decoder->decode($path);
+        $decoded = $decoder->decode($data);
 
         // Create a new torrent
         $torrent = new static();
