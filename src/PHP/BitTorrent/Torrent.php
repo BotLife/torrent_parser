@@ -102,6 +102,40 @@ class Torrent {
         }
     }
 
+    static public function createFromData($data, Decoder $decoder = null) {
+        // Make sure we have a decoder
+        if ($decoder === null) {
+            $decoder = new Decoder();
+        }
+
+        $decoded = $decoder->decode($path);
+
+        // Create a new torrent
+        $torrent = new static();
+
+        // Populate the object with data from the file
+        if (isset($decoded['announce'])) {
+            $torrent->setAnnounce($decoded['announce']);
+        }
+
+        if (isset($decoded['comment'])) {
+            $torrent->setComment($decoded['comment']);
+        }
+
+        if (isset($decoded['created by'])) {
+            $torrent->setCreatedBy($decoded['created by']);
+        }
+
+        if (isset($decoded['creation date'])) {
+            $torrent->setCreatedAt($decoded['creation date']);
+        }
+
+        if (isset($decoded['info'])) {
+            $torrent->setInfo($decoded['info']);
+        }
+
+        return $torrent;
+    }
     /**
      * Populate the instance of the object based on a torrent file
      *
