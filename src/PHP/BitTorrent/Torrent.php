@@ -605,4 +605,22 @@ class Torrent {
 
         return $info['name'];
     }
+    
+    public function getMagnet($html = false) {
+        $ampersand = $html ? '&amp;' : '&';
+        return sprintf(
+        	'magnet:?xt=urn:btih:%2$s%1$sdn=%3$s%1$sxl=%4$d%1$str=%5$s',
+            $ampersand, $this->getInfoHash(), urlencode($this->getName()),
+            $this->info['length'], implode(
+                $ampersand .'tr=', array_map(
+                    'urlencode', array($this->getAnnounce())
+                )
+            )
+        );
+    }
+    
+    public function getInfoHash() {
+        $encoder = new Encoder;
+        return sha1($encoder->encode($this->getInfo()));
+    }
 }
