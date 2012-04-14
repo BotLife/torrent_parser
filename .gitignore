@@ -1,6 +1,11 @@
 # Ignore backup files
 *~
 
+# IDE specific
+/.settings/
+/.project
+.buildpath
+
 # Forked
 build
 phpunit.xml

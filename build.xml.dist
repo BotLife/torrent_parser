@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="PHP BitTorrent" default="build" basedir=".">
-  <property name="source" value="${basedir}/PHP" />
+  <property name="source" value="${basedir}/src/PHP" />
   <property name="build" value="${basedir}/build" />
 
   <target name="clean" description="Clean up and create artifact directories">

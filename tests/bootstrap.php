@@ -29,6 +29,16 @@
  * @link https://github.com/christeredvartsen/php-bittorrent
  */
 
+set_include_path(
+    implode(
+        PATH_SEPARATOR,
+        array(
+            __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src',
+            get_include_path(),
+        )
+    )
+);
+
 // Autoloader for namespaced classes in the include_path
 spl_autoload_register(function($className) {
     $filename = str_replace('\\', '/', $className) . '.php';
